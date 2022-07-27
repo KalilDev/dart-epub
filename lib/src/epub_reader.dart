@@ -53,11 +53,11 @@ class EpubReader {
 
   static Future<EpubContent> readContent(EpubContentRef contentRef) async {
     final result = EpubContent();
-    result.Html = await readTextContentFiles(contentRef.Html);
-    result.Css = await readTextContentFiles(contentRef.Css);
-    result.Images = await readByteContentFiles(contentRef.Images);
-    result.Fonts = await readByteContentFiles(contentRef.Fonts);
-    result.AllFiles = {};
+    result.Html.addAll(await readTextContentFiles(contentRef.Html));
+    result.Css.addAll(await readTextContentFiles(contentRef.Css));
+    result.Images.addAll(await readByteContentFiles(contentRef.Images));
+    result.Fonts.addAll(await readByteContentFiles(contentRef.Fonts));
+    result.AllFiles.addAll({});
 
     result.Html.forEach((String key, EpubTextContentFile value) {
       result.AllFiles[key] = value;

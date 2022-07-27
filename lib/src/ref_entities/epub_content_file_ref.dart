@@ -9,15 +9,13 @@ import '../utils/zip_path_utils.dart';
 import 'epub_book_ref.dart';
 
 abstract class EpubContentFileRef {
-  EpubBookRef epubBookRef;
+  final EpubBookRef epubBookRef;
 
   String FileName;
 
   EpubContentType ContentType;
   String ContentMimeType;
-  EpubContentFileRef(EpubBookRef epubBookRef) {
-    this.epubBookRef = epubBookRef;
-  }
+  EpubContentFileRef(this.epubBookRef);
 
   @override
   int get hashCode =>

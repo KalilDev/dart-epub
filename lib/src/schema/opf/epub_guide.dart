@@ -4,11 +4,7 @@ import 'package:quiver/core.dart';
 import 'epub_guide_reference.dart';
 
 class EpubGuide {
-  List<EpubGuideReference> Items;
-
-  EpubGuide() {
-    Items = [];
-  }
+  final List<EpubGuideReference> Items = [];
 
   @override
   int get hashCode {

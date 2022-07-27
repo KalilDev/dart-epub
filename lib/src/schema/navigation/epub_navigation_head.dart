@@ -4,11 +4,7 @@ import 'package:quiver/core.dart';
 import 'epub_navigation_head_meta.dart';
 
 class EpubNavigationHead {
-  List<EpubNavigationHeadMeta> Metadata;
-
-  EpubNavigationHead() {
-    Metadata = [];
-  }
+  final List<EpubNavigationHeadMeta> Metadata = [];
 
   @override
   int get hashCode {

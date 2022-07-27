@@ -2,11 +2,7 @@ import 'package:quiver/collection.dart' as collections;
 import 'package:quiver/core.dart';
 
 class EpubNavigationDocTitle {
-  List<String> Titles;
-
-  EpubNavigationDocTitle() {
-    Titles = [];
-  }
+  final List<String> Titles = [];
 
   @override
   int get hashCode {

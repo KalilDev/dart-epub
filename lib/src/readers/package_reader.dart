@@ -22,7 +22,6 @@ import '../schema/opf/epub_version.dart';
 class PackageReader {
   static EpubGuide readGuide(xml.XmlElement guideNode) {
     final result = EpubGuide();
-    result.Items = [];
     guideNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement guideReferenceNode) {
@@ -57,7 +56,6 @@ class PackageReader {
 
   static EpubManifest readManifest(xml.XmlElement manifestNode) {
     final result = EpubManifest();
-    result.Items = [];
     manifestNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement manifestItemNode) {

@@ -4,11 +4,7 @@ import 'package:quiver/core.dart';
 import 'epub_manifest_item.dart';
 
 class EpubManifest {
-  List<EpubManifestItem> Items;
-
-  EpubManifest() {
-    Items = [];
-  }
+  final List<EpubManifestItem> Items = [];
 
   @override
   int get hashCode {

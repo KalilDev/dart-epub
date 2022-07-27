@@ -150,7 +150,6 @@ class NavigationReader {
   static EpubNavigationDocAuthor readNavigationDocAuthor(
       xml.XmlElement docAuthorNode) {
     final result = EpubNavigationDocAuthor();
-    result.Authors = [];
     docAuthorNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement textNode) {
@@ -164,7 +163,6 @@ class NavigationReader {
   static EpubNavigationDocTitle readNavigationDocTitle(
       xml.XmlElement docTitleNode) {
     final result = EpubNavigationDocTitle();
-    result.Titles = [];
     docTitleNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement textNode) {
@@ -177,7 +175,6 @@ class NavigationReader {
 
   static EpubNavigationHead readNavigationHead(xml.XmlElement headNode) {
     final result = EpubNavigationHead();
-    result.Metadata = [];
 
     headNode.children
         .whereType<xml.XmlElement>()

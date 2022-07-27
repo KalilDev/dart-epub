@@ -6,19 +6,11 @@ import 'epub_content_file_ref.dart';
 import 'epub_text_content_file_ref.dart';
 
 class EpubContentRef {
-  Map<String, EpubTextContentFileRef> Html;
-  Map<String, EpubTextContentFileRef> Css;
-  Map<String, EpubByteContentFileRef> Images;
-  Map<String, EpubByteContentFileRef> Fonts;
-  Map<String, EpubContentFileRef> AllFiles;
-
-  EpubContentRef() {
-    Html = {};
-    Css = {};
-    Images = {};
-    Fonts = {};
-    AllFiles = {};
-  }
+  final Map<String, EpubTextContentFileRef> Html = {};
+  final Map<String, EpubTextContentFileRef> Css = {};
+  final Map<String, EpubByteContentFileRef> Images = {};
+  final Map<String, EpubByteContentFileRef> Fonts = {};
+  final Map<String, EpubContentFileRef> AllFiles = {};
 
   @override
   int get hashCode {

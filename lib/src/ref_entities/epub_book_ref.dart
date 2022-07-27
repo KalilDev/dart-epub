@@ -12,16 +12,14 @@ import 'epub_chapter_ref.dart';
 import 'epub_content_ref.dart';
 
 class EpubBookRef {
-  Archive _epubArchive;
+  final Archive _epubArchive;
 
   String Title;
   String Author;
   List<String> AuthorList;
   EpubSchema Schema;
   EpubContentRef Content;
-  EpubBookRef(Archive epubArchive) {
-    _epubArchive = epubArchive;
-  }
+  EpubBookRef(this._epubArchive);
 
   @override
   int get hashCode {

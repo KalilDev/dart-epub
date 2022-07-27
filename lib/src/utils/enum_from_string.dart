@@ -1,5 +1,5 @@
 class EnumFromString<T> {
-  List<T> enumValues;
+  final List<T> enumValues;
 
   EnumFromString(this.enumValues);
 
