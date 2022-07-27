@@ -5,7 +5,7 @@ import '../schema/opf/epub_package.dart';
 
 class EpubSchema {
   /* late final */ EpubPackage Package;
-  /* late final */ EpubNavigation Navigation;
+  /* late final */ EpubNavigation/*!*/ Navigation;
   /* late final */ String ContentDirectoryPath;
 
   @override

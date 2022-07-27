@@ -13,7 +13,7 @@ class ChapterReader {
 
   static List<EpubChapterRef> getChaptersImpl(
       EpubBookRef bookRef, List<EpubNavigationPoint> navigationPoints) {
-    final result = [];
+    final result = <EpubChapterRef>[];
     navigationPoints.forEach((EpubNavigationPoint navigationPoint) {
       String contentFileName;
       String anchor;

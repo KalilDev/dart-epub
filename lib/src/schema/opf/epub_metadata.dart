@@ -8,22 +8,22 @@ import 'epub_metadata_identifier.dart';
 import 'epub_metadata_meta.dart';
 
 class EpubMetadata {
-  /* late final */ List<String> Titles;
-  /* late final */ List<EpubMetadataCreator> Creators;
-  /* late final */ List<String> Subjects;
-  /* late final */ String Description;
-  /* late final */ List<String> Publishers;
-  /* late final */ List<EpubMetadataContributor> Contributors;
-  /* late final */ List<EpubMetadataDate> Dates;
-  /* late final */ List<String> Types;
-  /* late final */ List<String> Formats;
-  /* late final */ List<EpubMetadataIdentifier> Identifiers;
-  /* late final */ List<String> Sources;
-  /* late final */ List<String> Languages;
-  /* late final */ List<String> Relations;
-  /* late final */ List<String> Coverages;
-  /* late final */ List<String> Rights;
-  /* late final */ List<EpubMetadataMeta> MetaItems;
+  final List<String> Titles = [];
+  final List<EpubMetadataCreator> Creators = [];
+  final List<String> Subjects = [];
+  /*late final*/ String /*?*/ Description;
+  final List<String> Publishers = [];
+  final List<EpubMetadataContributor> Contributors = [];
+  final List<EpubMetadataDate> Dates = [];
+  final List<String> Types = [];
+  final List<String> Formats = [];
+  final List<EpubMetadataIdentifier> Identifiers = [];
+  final List<String> Sources = [];
+  final List<String> Languages = [];
+  final List<String> Relations = [];
+  final List<String> Coverages = [];
+  final List<String> Rights = [];
+  final List<EpubMetadataMeta> MetaItems = [];
 
   @override
   int get hashCode {

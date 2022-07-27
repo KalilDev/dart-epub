@@ -22,7 +22,7 @@ class EpubWriter {
 
     // Add all content to the archive
     book.Content.AllFiles.forEach((name, file) {
-      List<int> content;
+      List<int>/*!*/ content;
 
       if (file is EpubByteContentFile) {
         content = file.Content;

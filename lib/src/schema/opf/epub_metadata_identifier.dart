@@ -1,8 +1,8 @@
 import 'package:quiver/core.dart';
 
 class EpubMetadataIdentifier {
-  /* late final */ String Id;
-  /* late final */ String Scheme;
+  /* late final */ String/*?*/ Id;
+  /* late final */ String/*?*/ Scheme;
   /* late final */ String Identifier;
 
   @override

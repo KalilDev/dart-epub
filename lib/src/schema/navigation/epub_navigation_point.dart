@@ -8,9 +8,9 @@ class EpubNavigationPoint {
   /* late final */ String Id;
   /* late final */ String Class;
   /* late final */ String PlayOrder;
-  /* late final */ List<EpubNavigationLabel> NavigationLabels;
+  final List<EpubNavigationLabel> NavigationLabels = [];
   /* late final */ EpubNavigationContent Content;
-  /* late final */ List<EpubNavigationPoint> ChildNavigationPoints;
+  final List<EpubNavigationPoint> ChildNavigationPoints = [];
 
   @override
   int get hashCode {

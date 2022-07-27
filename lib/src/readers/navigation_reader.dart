@@ -25,7 +25,7 @@ import '../utils/enum_from_string.dart';
 import '../utils/zip_path_utils.dart';
 
 class NavigationReader {
-  static Future<EpubNavigation> readNavigation(Archive epubArchive,
+  static Future<EpubNavigation /*!*/ > readNavigation(Archive epubArchive,
       String contentDirectoryPath, EpubPackage package) async {
     final result = EpubNavigation();
     final tocId = package.Spine.TableOfContents;
@@ -87,7 +87,6 @@ class NavigationReader {
 
     final navigationDocTitle = readNavigationDocTitle(docTitleNode);
     result.DocTitle = navigationDocTitle;
-    result.DocAuthors = [];
     ncxNode
         .findElements('docAuthor', namespace: ncxNamespace)
         .forEach((xml.XmlElement docAuthorNode) {
@@ -113,7 +112,6 @@ class NavigationReader {
       result.PageList = pageList;
     }
 
-    result.NavLists = [];
     ncxNode
         .findElements('navList', namespace: ncxNamespace)
         .forEach((xml.XmlElement navigationListNode) {
@@ -267,7 +265,6 @@ class NavigationReader {
 
   static EpubNavigationMap readNavigationMap(xml.XmlElement navigationMapNode) {
     final result = EpubNavigationMap();
-    result.Points = [];
     navigationMapNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement navigationPointNode) {
@@ -282,7 +279,6 @@ class NavigationReader {
   static EpubNavigationPageList readNavigationPageList(
       xml.XmlElement navigationPageListNode) {
     final result = EpubNavigationPageList();
-    result.Targets = [];
     navigationPageListNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement pageTargetNode) {
@@ -298,7 +294,6 @@ class NavigationReader {
   static EpubNavigationPageTarget readNavigationPageTarget(
       xml.XmlElement navigationPageTargetNode) {
     final result = EpubNavigationPageTarget();
-    result.NavigationLabels = [];
     navigationPageTargetNode.attributes
         .forEach((xml.XmlAttribute navigationPageTargetNodeAttribute) {
       final attributeValue = navigationPageTargetNodeAttribute.value;
@@ -373,8 +368,6 @@ class NavigationReader {
       throw Exception('Incorrect EPUB navigation point: point ID is missing.');
     }
 
-    result.NavigationLabels = [];
-    result.ChildNavigationPoints = [];
     navigationPointNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement navigationPointChildNode) {

@@ -5,7 +5,7 @@ import 'dart:convert' as convert;
 import 'package:xml/xml.dart' as xml;
 
 class RootFilePathReader {
-  static Future<String> getRootFilePath(Archive epubArchive) async {
+  static Future<String/*!*/> getRootFilePath(Archive epubArchive) async {
     const EPUB_CONTAINER_FILE_PATH = 'META-INF/container.xml';
 
     final containerFileEntry = epubArchive.files.firstWhere(

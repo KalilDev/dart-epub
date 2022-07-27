@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:archive/archive.dart';
 import 'dart:convert' as convert;
 import 'package:xml/xml.dart' as xml;
-
+import 'package:collection/collection.dart' show IterableExtension;
 import '../schema/opf/epub_guide.dart';
 import '../schema/opf/epub_guide_reference.dart';
 import '../schema/opf/epub_manifest.dart';
@@ -108,21 +108,6 @@ class PackageReader {
   static EpubMetadata readMetadata(
       xml.XmlElement metadataNode, EpubVersion epubVersion) {
     final result = EpubMetadata();
-    result.Titles = [];
-    result.Creators = [];
-    result.Subjects = [];
-    result.Publishers = [];
-    result.Contributors = [];
-    result.Dates = [];
-    result.Types = [];
-    result.Formats = [];
-    result.Identifiers = [];
-    result.Sources = [];
-    result.Languages = [];
-    result.Relations = [];
-    result.Coverages = [];
-    result.Rights = [];
-    result.MetaItems = [];
     metadataNode.children
         .whereType<xml.XmlElement>()
         .forEach((xml.XmlElement metadataItemNode) {
@@ -327,7 +312,7 @@ class PackageReader {
     }
     final metadataNode = packageNode
         .findElements('metadata', namespace: opfNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null);
+        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
     if (metadataNode == null) {
       throw Exception('EPUB parsing error: metadata not found in the package.');
     }
@@ -335,7 +320,7 @@ class PackageReader {
     result.Metadata = metadata;
     final manifestNode = packageNode
         .findElements('manifest', namespace: opfNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null);
+        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
     if (manifestNode == null) {
       throw Exception('EPUB parsing error: manifest not found in the package.');
     }
@@ -344,7 +329,7 @@ class PackageReader {
 
     final spineNode = packageNode
         .findElements('spine', namespace: opfNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null);
+        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
     if (spineNode == null) {
       throw Exception('EPUB parsing error: spine not found in the package.');
     }
@@ -362,7 +347,6 @@ class PackageReader {
 
   static EpubSpine readSpine(xml.XmlElement spineNode) {
     final result = EpubSpine();
-    result.Items = [];
     final tocAttribute = spineNode.getAttribute('toc');
     result.TableOfContents = tocAttribute;
     spineNode.children

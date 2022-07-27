@@ -16,7 +16,7 @@ class EpubBookRef {
 
   /* late final */ String Title;
   /* late final */ String Author;
-  /* late final */ List<String> /*?*/ AuthorList;
+  /* late final */ List<String> /*!*/ AuthorList;
   /* late final */ EpubSchema Schema;
   /* late final */ EpubContentRef Content;
   EpubBookRef(this._epubArchive);

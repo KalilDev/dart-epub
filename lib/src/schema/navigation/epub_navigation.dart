@@ -11,10 +11,10 @@ import 'epub_navigation_page_list.dart';
 class EpubNavigation {
   /* late final */ EpubNavigationHead Head;
   /* late final */ EpubNavigationDocTitle DocTitle;
-  /* late final */ List<EpubNavigationDocAuthor> /*?*/ DocAuthors;
+  final List<EpubNavigationDocAuthor> DocAuthors = [];
   /* late final */ EpubNavigationMap NavMap;
   /* late final */ EpubNavigationPageList PageList;
-  /* late final */ List<EpubNavigationList> /*?*/ NavLists;
+  final List<EpubNavigationList> NavLists = [];
 
   @override
   int get hashCode {
