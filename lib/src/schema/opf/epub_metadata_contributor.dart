@@ -12,7 +12,6 @@ class EpubMetadataContributor {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataContributor;
-    if (otherAs == null) return false;
 
     return Contributor == otherAs.Contributor &&
         FileAs == otherAs.FileAs &&

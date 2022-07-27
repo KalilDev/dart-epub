@@ -15,8 +15,8 @@ class EpubNavigationList {
     var objects = [
       Id.hashCode,
       Class.hashCode,
-      ...NavigationLabels?.map((label) => label.hashCode) ?? [0],
-      ...NavigationTargets?.map((target) => target.hashCode) ?? [0]
+      ...NavigationLabels.map((label) => label.hashCode),
+      ...NavigationTargets.map((target) => target.hashCode)
     ];
     return hashObjects(objects);
   }
@@ -24,7 +24,6 @@ class EpubNavigationList {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationList;
-    if (otherAs == null) return false;
 
     if (!(Id == otherAs.Id && Class == otherAs.Class)) {
       return false;

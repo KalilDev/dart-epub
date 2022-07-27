@@ -28,9 +28,6 @@ class EpubNavigationPoint {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationPoint;
-    if (otherAs == null) {
-      return false;
-    }
 
     if (!collections.listsEqual(NavigationLabels, otherAs.NavigationLabels)) {
       return false;

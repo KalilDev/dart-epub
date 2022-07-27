@@ -23,8 +23,8 @@ class EpubNavigation {
       DocTitle.hashCode,
       NavMap.hashCode,
       PageList.hashCode,
-      ...DocAuthors?.map((author) => author.hashCode) ?? [0],
-      ...NavLists?.map((navList) => navList.hashCode) ?? [0]
+      ...DocAuthors.map((author) => author.hashCode),
+      ...NavLists.map((navList) => navList.hashCode)
     ];
     return hashObjects(objects);
   }
@@ -32,9 +32,6 @@ class EpubNavigation {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigation;
-    if (otherAs == null) {
-      return false;
-    }
 
     if (!collections.listsEqual(DocAuthors, otherAs.DocAuthors)) {
       return false;

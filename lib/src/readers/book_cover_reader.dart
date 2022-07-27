@@ -11,7 +11,7 @@ import '../schema/opf/epub_metadata_meta.dart';
 class BookCoverReader {
   static Future<images.Image?> readBookCover(EpubBookRef bookRef) async {
     final metaItems = bookRef.Schema.Package.Metadata.MetaItems;
-    if (metaItems == null || metaItems.isEmpty) return null;
+    if (metaItems.isEmpty) return null;
 
     final coverMetaItem = metaItems.firstWhereOrNull(
         (EpubMetadataMeta metaItem) =>

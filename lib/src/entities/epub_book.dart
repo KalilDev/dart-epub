@@ -22,7 +22,7 @@ class EpubBook {
       Author.hashCode,
       Schema.hashCode,
       Content.hashCode,
-      ...CoverImage?.getBytes()?.map((byte) => byte.hashCode) ?? [0],
+      ...CoverImage?.getBytes().map((byte) => byte.hashCode) ?? [0],
       ...AuthorList?.map((author) => author.hashCode) ?? [0],
       ...Chapters?.map((chapter) => chapter.hashCode) ?? [0]
     ];
@@ -32,9 +32,6 @@ class EpubBook {
   @override
   bool operator ==(other) {
     final otherAs = other as EpubBook;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Title == otherAs.Title &&
         Author == otherAs.Author &&

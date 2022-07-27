@@ -8,13 +8,12 @@ class EpubNavigationPageList {
 
   @override
   int get hashCode {
-    return hashObjects(Targets?.map((target) => target.hashCode) ?? [0]);
+    return hashObjects(Targets.map((target) => target.hashCode));
   }
 
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationPageList;
-    if (otherAs == null) return false;
 
     return collections.listsEqual(Targets, otherAs.Targets);
   }

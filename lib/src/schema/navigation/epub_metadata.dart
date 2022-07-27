@@ -10,7 +10,6 @@ class EpubNavigationContent {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationContent;
-    if (otherAs == null) return false;
     return Id == otherAs.Id && Source == otherAs.Source;
   }
 

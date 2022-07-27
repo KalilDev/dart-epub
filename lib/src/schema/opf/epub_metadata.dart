@@ -52,7 +52,6 @@ class EpubMetadata {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadata;
-    if (otherAs == null) return false;
     if (Description != otherAs.Description) return false;
 
     if (!collections.listsEqual(Titles, otherAs.Titles) ||

@@ -21,7 +21,6 @@ class EpubMetadataMeta {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataMeta;
-    if (otherAs == null) return false;
     return Name == otherAs.Name &&
         Content == otherAs.Content &&
         Id == otherAs.Id &&

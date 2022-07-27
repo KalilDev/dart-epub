@@ -33,9 +33,6 @@ class EpubContent {
   @override
   bool operator ==(other) {
     final otherAs = other as EpubContent;
-    if (otherAs == null) {
-      return false;
-    }
 
     return collections.mapsEqual(Html, otherAs.Html) &&
         collections.mapsEqual(Css, otherAs.Css) &&

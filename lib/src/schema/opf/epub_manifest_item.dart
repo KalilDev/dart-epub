@@ -23,9 +23,6 @@ class EpubManifestItem {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubManifestItem;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Id == otherAs.Id &&
         Href == otherAs.Href &&

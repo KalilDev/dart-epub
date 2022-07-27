@@ -11,9 +11,6 @@ class EpubGuideReference {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubGuideReference;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Type == otherAs.Type &&
         Title == otherAs.Title &&

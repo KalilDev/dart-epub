@@ -10,7 +10,6 @@ class EpubMetadataDate {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataDate;
-    if (otherAs == null) return false;
     return Date == otherAs.Date && Event == otherAs.Event;
   }
 }

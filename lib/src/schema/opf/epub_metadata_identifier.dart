@@ -11,7 +11,6 @@ class EpubMetadataIdentifier {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataIdentifier;
-    if (otherAs == null) return false;
     return Id == otherAs.Id &&
         Scheme == otherAs.Scheme &&
         Identifier == otherAs.Identifier;

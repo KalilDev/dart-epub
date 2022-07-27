@@ -16,9 +16,6 @@ class EpubGuide {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubGuide;
-    if (otherAs == null) {
-      return false;
-    }
 
     return collections.listsEqual(Items, otherAs.Items);
   }

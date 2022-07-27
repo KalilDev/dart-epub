@@ -2,7 +2,7 @@ import 'package:quiver/core.dart';
 
 class EpubNavigationHeadMeta {
   late final String Name;
-  late final String Content;
+  late final String? Content;
   late final String Scheme;
 
   @override
@@ -11,9 +11,6 @@ class EpubNavigationHeadMeta {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationHeadMeta;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Name == otherAs.Name &&
         Content == otherAs.Content &&

@@ -15,9 +15,6 @@ class EpubSchema {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubSchema;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Package == otherAs.Package &&
         Navigation == otherAs.Navigation &&

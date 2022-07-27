@@ -19,7 +19,6 @@ class EpubSpine {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubSpine;
-    if (otherAs == null) return false;
 
     if (!collections.listsEqual(Items, otherAs.Items)) {
       return false;

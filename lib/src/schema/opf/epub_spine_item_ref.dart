@@ -10,9 +10,6 @@ class EpubSpineItemRef {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubSpineItemRef;
-    if (otherAs == null) {
-      return false;
-    }
 
     return IdRef == otherAs.IdRef && IsLinear == otherAs.IsLinear;
   }

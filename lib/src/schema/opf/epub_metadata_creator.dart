@@ -11,7 +11,6 @@ class EpubMetadataCreator {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataCreator;
-    if (otherAs == null) return false;
     return Creator == otherAs.Creator &&
         FileAs == otherAs.FileAs &&
         Role == otherAs.Role;

@@ -9,7 +9,7 @@ class ZipPathUtils {
   }
 
   static String combine(String directory, String fileName) {
-    if (directory == null || directory == '') {
+    if (directory == '') {
       return fileName;
     } else {
       return directory + '/' + fileName;

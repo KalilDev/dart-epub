@@ -30,7 +30,7 @@ class NavigationReader {
       String contentDirectoryPath, EpubPackage package) async {
     final result = EpubNavigation();
     final tocId = package.Spine.TableOfContents;
-    if (tocId == null || tocId.isEmpty) {
+    if (tocId.isEmpty) {
       if (package.Version == EpubVersion.Epub2) {
         throw Exception('EPUB parsing error: TOC ID is empty.');
       }
@@ -133,7 +133,7 @@ class NavigationReader {
           break;
       }
     });
-    if (result.Source == null || result.Source.isEmpty) {
+    if (result.Source.isEmpty) {
       throw Exception(
           'Incorrect EPUB navigation content: content source is missing.');
     }
@@ -190,7 +190,7 @@ class NavigationReader {
           }
         });
 
-        if (meta.Name == null || meta.Name.isEmpty) {
+        if (meta.Name.isEmpty) {
           throw Exception(
               'Incorrect EPUB navigation meta: meta name is missing.');
         }
@@ -211,7 +211,7 @@ class NavigationReader {
 
     final navigationLabelTextNode = navigationLabelNode
         .findElements('text', namespace: navigationLabelNode.name.namespaceUri)
-        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
+        .firstOrNull;
     if (navigationLabelTextNode == null) {
       throw Exception(
           'Incorrect EPUB navigation label: label text element is missing.');
@@ -360,7 +360,7 @@ class NavigationReader {
           break;
       }
     });
-    if (result.Id == null || result.Id.isEmpty) {
+    if (result.Id.isEmpty) {
       throw Exception('Incorrect EPUB navigation point: point ID is missing.');
     }
 
@@ -388,11 +388,6 @@ class NavigationReader {
       throw Exception(
           'EPUB parsing error: navigation point ${result.Id} should contain at least one navigation label.');
     }
-    if (result.Content == null) {
-      throw Exception(
-          'EPUB parsing error: navigation point ${result.Id} should contain content.');
-    }
-
     return result;
   }
 
@@ -417,7 +412,7 @@ class NavigationReader {
           break;
       }
     });
-    if (result.Id == null || result.Id.isEmpty) {
+    if (result.Id.isEmpty) {
       throw Exception(
           'Incorrect EPUB navigation target: navigation target ID is missing.');
     }

@@ -14,9 +14,6 @@ abstract class EpubContentFile {
   @override
   bool operator ==(other) {
     final otherAs = other as EpubContentFile;
-    if (otherAs == null) {
-      return false;
-    }
     return FileName == otherAs.FileName &&
         ContentType == otherAs.ContentType &&
         ContentMimeType == otherAs.ContentMimeType;

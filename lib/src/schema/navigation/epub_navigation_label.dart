@@ -7,7 +7,6 @@ class EpubNavigationLabel {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationLabel;
-    if (otherAs == null) return false;
     return Text == otherAs.Text;
   }
 

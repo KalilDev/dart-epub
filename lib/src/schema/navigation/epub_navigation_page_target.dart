@@ -23,7 +23,7 @@ class EpubNavigationPageTarget {
       Class.hashCode,
       PlayOrder.hashCode,
       Content.hashCode,
-      ...NavigationLabels?.map((label) => label.hashCode) ?? [0]
+      ...NavigationLabels.map((label) => label.hashCode)
     ];
     return hashObjects(objects);
   }
@@ -31,9 +31,6 @@ class EpubNavigationPageTarget {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationPageTarget;
-    if (otherAs == null) {
-      return false;
-    }
 
     if (!(Id == otherAs.Id &&
         Value == otherAs.Value &&

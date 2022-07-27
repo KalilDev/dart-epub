@@ -13,7 +13,6 @@ class EpubNavigationDocAuthor {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationDocAuthor;
-    if (otherAs == null) return false;
 
     return collections.listsEqual(Authors, otherAs.Authors);
   }

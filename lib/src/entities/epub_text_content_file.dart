@@ -11,9 +11,6 @@ class EpubTextContentFile extends EpubContentFile {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubTextContentFile;
-    if (otherAs == null) {
-      return false;
-    }
     return Content == otherAs.Content &&
         ContentMimeType == otherAs.ContentMimeType &&
         ContentType == otherAs.ContentType &&

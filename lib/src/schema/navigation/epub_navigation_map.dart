@@ -8,13 +8,12 @@ class EpubNavigationMap {
 
   @override
   int get hashCode {
-    return hashObjects(Points?.map((point) => point.hashCode) ?? [0]);
+    return hashObjects(Points.map((point) => point.hashCode));
   }
 
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationMap;
-    if (otherAs == null) return false;
 
     return collections.listsEqual(Points, otherAs.Points);
   }

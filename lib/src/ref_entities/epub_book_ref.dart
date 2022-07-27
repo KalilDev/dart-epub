@@ -28,7 +28,7 @@ class EpubBookRef {
       Author.hashCode,
       Schema.hashCode,
       Content.hashCode,
-      ...AuthorList?.map((author) => author.hashCode) ?? [0]
+      ...AuthorList.map((author) => author.hashCode)
     ];
     return hashObjects(objects);
   }
@@ -36,9 +36,6 @@ class EpubBookRef {
   @override
   bool operator ==(other) {
     final otherAs = other as EpubBookRef;
-    if (otherAs == null) {
-      return false;
-    }
     return Title == otherAs.Title &&
         Author == otherAs.Author &&
         Schema == otherAs.Schema &&

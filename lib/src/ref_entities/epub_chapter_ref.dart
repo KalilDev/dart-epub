@@ -30,9 +30,6 @@ class EpubChapterRef {
   @override
   bool operator ==(other) {
     final otherAs = other as EpubChapterRef;
-    if (otherAs == null) {
-      return false;
-    }
     return Title == otherAs.Title &&
         ContentFileName == otherAs.ContentFileName &&
         Anchor == otherAs.Anchor &&

@@ -15,9 +15,6 @@ class EpubNavigationHead {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationHead;
-    if (otherAs == null) {
-      return false;
-    }
 
     return collections.listsEqual(Metadata, otherAs.Metadata);
   }

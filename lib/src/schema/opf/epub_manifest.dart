@@ -14,9 +14,6 @@ class EpubManifest {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubManifest;
-    if (otherAs == null) {
-      return false;
-    }
     return collections.listsEqual(Items, otherAs.Items);
   }
 }

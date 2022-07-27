@@ -25,9 +25,6 @@ class EpubPackage {
   @override
   bool operator ==(other) {
     var otherAs = other as EpubPackage;
-    if (otherAs == null) {
-      return false;
-    }
 
     return Version == otherAs.Version &&
         Metadata == otherAs.Metadata &&

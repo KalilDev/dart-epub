@@ -42,10 +42,10 @@ class PackageReader {
               break;
           }
         });
-        if (guideReference.Type == null || guideReference.Type.isEmpty) {
+        if (guideReference.Type.isEmpty) {
           throw Exception('Incorrect EPUB guide: item type is missing');
         }
-        if (guideReference.Href == null || guideReference.Href.isEmpty) {
+        if (guideReference.Href.isEmpty) {
           throw Exception('Incorrect EPUB guide: item href is missing');
         }
         result.Items.add(guideReference);
@@ -89,13 +89,13 @@ class PackageReader {
           }
         });
 
-        if (manifestItem.Id == null || manifestItem.Id.isEmpty) {
+        if (manifestItem.Id.isEmpty) {
           throw Exception('Incorrect EPUB manifest: item ID is missing');
         }
-        if (manifestItem.Href == null || manifestItem.Href.isEmpty) {
+        if (manifestItem.Href.isEmpty) {
           throw Exception('Incorrect EPUB manifest: item href is missing');
         }
-        if (manifestItem.MediaType == null || manifestItem.MediaType.isEmpty) {
+        if (manifestItem.MediaType.isEmpty) {
           throw Exception(
               'Incorrect EPUB manifest: item media type is missing');
         }
@@ -299,7 +299,7 @@ class PackageReader {
     final opfNamespace = 'http://www.idpf.org/2007/opf';
     final packageNode = containerDocument
         .findElements('package', namespace: opfNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null);
+        .first;
     final result = EpubPackage();
     final epubVersionValue = packageNode.getAttribute('version');
     if (epubVersionValue == '2.0') {
@@ -311,7 +311,7 @@ class PackageReader {
     }
     final metadataNode = packageNode
         .findElements('metadata', namespace: opfNamespace)
-        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
+        .firstOrNull;
     if (metadataNode == null) {
       throw Exception('EPUB parsing error: metadata not found in the package.');
     }
@@ -319,24 +319,22 @@ class PackageReader {
     result.Metadata = metadata;
     final manifestNode = packageNode
         .findElements('manifest', namespace: opfNamespace)
-        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
+        .firstOrNull;
     if (manifestNode == null) {
       throw Exception('EPUB parsing error: manifest not found in the package.');
     }
     final manifest = readManifest(manifestNode);
     result.Manifest = manifest;
 
-    final spineNode = packageNode
-        .findElements('spine', namespace: opfNamespace)
-        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
+    final spineNode =
+        packageNode.findElements('spine', namespace: opfNamespace).firstOrNull;
     if (spineNode == null) {
       throw Exception('EPUB parsing error: spine not found in the package.');
     }
     final spine = readSpine(spineNode);
     result.Spine = spine;
-    final guideNode = packageNode
-        .findElements('guide', namespace: opfNamespace)
-        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
+    final guideNode =
+        packageNode.findElements('guide', namespace: opfNamespace).firstOrNull;
     if (guideNode != null) {
       final guide = readGuide(guideNode);
       result.Guide = guide;

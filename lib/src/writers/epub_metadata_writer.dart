@@ -30,13 +30,9 @@ class EpubMetadataWriter {
             builder.element('publisher', namespace: _dc_namespace, nest: item))
         ..Contributors.forEach((item) =>
             builder.element('contributor', namespace: _dc_namespace, nest: () {
-              if (item.Role != null) {
-                builder.attribute('role', item.Role, namespace: _opf_namespace);
-              }
-              if (item.FileAs != null) {
-                builder.attribute('file-as', item.FileAs,
-                    namespace: _opf_namespace);
-              }
+              builder.attribute('role', item.Role, namespace: _opf_namespace);
+              builder.attribute('file-as', item.FileAs,
+                  namespace: _opf_namespace);
               builder.text(item.Contributor);
             }))
         ..Dates.forEach((date) =>
