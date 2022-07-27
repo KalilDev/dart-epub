@@ -1,9 +1,9 @@
 import 'package:quiver/core.dart';
 
 class EpubMetadataContributor {
-  /* late final */ String Contributor;
-  /* late final */ String FileAs;
-  /* late final */ String Role;
+  late final String Contributor;
+  late final String FileAs;
+  late final String Role;
 
   @override
   int get hashCode =>

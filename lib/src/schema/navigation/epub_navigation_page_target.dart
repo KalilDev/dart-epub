@@ -6,13 +6,13 @@ import 'epub_navigation_label.dart';
 import 'epub_navigation_page_target_type.dart';
 
 class EpubNavigationPageTarget {
-  /* late final */ String Id;
-  /* late final */ String Value;
-  /* late final */ EpubNavigationPageTargetType Type;
-  /* late final */ String Class;
-  /* late final */ String PlayOrder;
+  late final String Id;
+  late final String Value;
+  late final EpubNavigationPageTargetType? Type;
+  late final String Class;
+  late final String PlayOrder;
   final List<EpubNavigationLabel> NavigationLabels = [];
-  /* late final */ EpubNavigationContent Content;
+  late final EpubNavigationContent Content;
 
   @override
   int get hashCode {

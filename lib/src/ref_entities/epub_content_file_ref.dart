@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:archive/archive.dart';
 import 'dart:convert' as convert;
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:quiver/core.dart';
 
 import '../entities/epub_content_type.dart';
@@ -11,10 +12,10 @@ import 'epub_book_ref.dart';
 abstract class EpubContentFileRef {
   final EpubBookRef epubBookRef;
 
-  String FileName;
+  String? FileName;
 
-  EpubContentType ContentType;
-  String ContentMimeType;
+  EpubContentType? ContentType;
+  String? ContentMimeType;
   EpubContentFileRef(this.epubBookRef);
 
   @override
@@ -31,10 +32,9 @@ abstract class EpubContentFileRef {
 
   ArchiveFile getContentFileEntry() {
     final contentFilePath =
-        ZipPathUtils.combine(epubBookRef.Schema.ContentDirectoryPath, FileName);
-    final contentFileEntry = epubBookRef.EpubArchive().files.firstWhere(
-        (ArchiveFile x) => x.name == contentFilePath,
-        orElse: () => null);
+        ZipPathUtils.combine(epubBookRef.Schema.ContentDirectoryPath, FileName!);
+    final contentFileEntry = epubBookRef.EpubArchive().files.firstWhereOrNull(
+        (ArchiveFile x) => x.name == contentFilePath);
     if (contentFileEntry == null) {
       throw Exception(
           'EPUB parsing error: file $contentFilePath not found in archive.');

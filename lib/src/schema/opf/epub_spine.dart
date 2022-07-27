@@ -4,7 +4,7 @@ import 'package:quiver/core.dart';
 import 'epub_spine_item_ref.dart';
 
 class EpubSpine {
-  /* late final */ String /*!*/ TableOfContents;
+  late final String TableOfContents;
   final List<EpubSpineItemRef> Items = [];
 
   @override

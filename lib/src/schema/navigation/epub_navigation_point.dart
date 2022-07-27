@@ -5,11 +5,11 @@ import 'epub_metadata.dart';
 import 'epub_navigation_label.dart';
 
 class EpubNavigationPoint {
-  /* late final */ String Id;
-  /* late final */ String Class;
-  /* late final */ String PlayOrder;
+  late final String Id;
+  late final String Class;
+  late final String PlayOrder;
   final List<EpubNavigationLabel> NavigationLabels = [];
-  /* late final */ EpubNavigationContent Content;
+  late final EpubNavigationContent Content;
   final List<EpubNavigationPoint> ChildNavigationPoints = [];
 
   @override

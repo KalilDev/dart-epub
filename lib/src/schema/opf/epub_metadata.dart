@@ -11,7 +11,7 @@ class EpubMetadata {
   final List<String> Titles = [];
   final List<EpubMetadataCreator> Creators = [];
   final List<String> Subjects = [];
-  /*late final*/ String /*?*/ Description;
+  late final String? Description;
   final List<String> Publishers = [];
   final List<EpubMetadataContributor> Contributors = [];
   final List<EpubMetadataDate> Dates = [];

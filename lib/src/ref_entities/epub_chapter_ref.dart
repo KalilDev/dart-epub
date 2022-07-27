@@ -6,12 +6,12 @@ import 'package:quiver/core.dart';
 import 'epub_text_content_file_ref.dart';
 
 class EpubChapterRef {
-  final EpubTextContentFileRef epubTextContentFileRef;
+  final EpubTextContentFileRef? epubTextContentFileRef;
 
-  /* late final */ String Title;
-  /* late final */ String ContentFileName;
-  /* late final */ String Anchor;
-  /* late final */ List<EpubChapterRef> /*?*/ SubChapters;
+  late final String Title;
+  late final String ContentFileName;
+  late final String? Anchor;
+  late final List<EpubChapterRef>? SubChapters;
 
   EpubChapterRef(this.epubTextContentFileRef);
 
@@ -41,11 +41,11 @@ class EpubChapterRef {
   }
 
   Future<String> readHtmlContent() async {
-    return epubTextContentFileRef.readContentAsText();
+    return epubTextContentFileRef!.readContentAsText();
   }
 
   @override
   String toString() {
-    return 'Title: $Title, Subchapter count: ${SubChapters.length}';
+    return 'Title: $Title, Subchapter count: ${SubChapters!.length}';
   }
 }

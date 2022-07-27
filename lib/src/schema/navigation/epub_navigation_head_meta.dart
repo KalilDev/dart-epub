@@ -1,9 +1,9 @@
 import 'package:quiver/core.dart';
 
 class EpubNavigationHeadMeta {
-  /* late final */ String Name;
-  /* late final */ String Content;
-  /* late final */ String Scheme;
+  late final String Name;
+  late final String Content;
+  late final String Scheme;
 
   @override
   int get hashCode => hash3(Name.hashCode, Content.hashCode, Scheme.hashCode);

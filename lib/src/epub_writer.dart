@@ -22,12 +22,12 @@ class EpubWriter {
 
     // Add all content to the archive
     book.Content.AllFiles.forEach((name, file) {
-      List<int>/*!*/ content;
+      List<int> content;
 
       if (file is EpubByteContentFile) {
         content = file.Content;
-      } else if (file is EpubTextContentFile) {
-        content = convert.utf8.encode(file.Content);
+      } else {
+        content = convert.utf8.encode((file as EpubTextContentFile).Content);
       }
 
       arch.addFile(ArchiveFile(
@@ -48,7 +48,7 @@ class EpubWriter {
   }
 
   // Serializes the EpubBook into a byte array
-  static List<int> writeBook(EpubBook book) {
+  static List<int>? writeBook(EpubBook book) {
     final arch = _createArchive(book);
 
     return ZipEncoder().encode(arch);

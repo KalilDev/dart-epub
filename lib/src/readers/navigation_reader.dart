@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:archive/archive.dart';
 import 'dart:convert' as convert;
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:epub/src/schema/opf/epub_version.dart';
 import 'package:xml/xml.dart' as xml;
 
@@ -25,7 +26,7 @@ import '../utils/enum_from_string.dart';
 import '../utils/zip_path_utils.dart';
 
 class NavigationReader {
-  static Future<EpubNavigation /*!*/ > readNavigation(Archive epubArchive,
+  static Future<EpubNavigation?> readNavigation(Archive epubArchive,
       String contentDirectoryPath, EpubPackage package) async {
     final result = EpubNavigation();
     final tocId = package.Spine.TableOfContents;
@@ -36,9 +37,9 @@ class NavigationReader {
       return null;
     }
 
-    final tocManifestItem = package.Manifest.Items.firstWhere(
-        (EpubManifestItem item) => item.Id.toLowerCase() == tocId.toLowerCase(),
-        orElse: () => null);
+    final tocManifestItem = package.Manifest.Items.firstWhereOrNull(
+        (EpubManifestItem item) =>
+            item.Id.toLowerCase() == tocId.toLowerCase());
     if (tocManifestItem == null) {
       throw Exception(
           'EPUB parsing error: TOC item $tocId not found in EPUB manifest.');
@@ -46,10 +47,9 @@ class NavigationReader {
 
     final tocFileEntryPath =
         ZipPathUtils.combine(contentDirectoryPath, tocManifestItem.Href);
-    final tocFileEntry = epubArchive.files.firstWhere(
+    final tocFileEntry = epubArchive.files.firstWhereOrNull(
         (ArchiveFile file) =>
-            file.name.toLowerCase() == tocFileEntryPath.toLowerCase(),
-        orElse: () => null);
+            file.name.toLowerCase() == tocFileEntryPath.toLowerCase());
     if (tocFileEntry == null) {
       throw Exception(
           'EPUB parsing error: TOC file $tocFileEntryPath not found in archive.');
@@ -61,15 +61,14 @@ class NavigationReader {
     final ncxNamespace = 'http://www.daisy.org/z3986/2005/ncx/';
     final ncxNode = containerDocument
         .findAllElements('ncx', namespace: ncxNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+        .firstOrNull;
     if (ncxNode == null) {
       throw Exception(
           'EPUB parsing error: TOC file does not contain ncx element.');
     }
 
-    final headNode = ncxNode
-        .findAllElements('head', namespace: ncxNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+    final headNode =
+        ncxNode.findAllElements('head', namespace: ncxNamespace).firstOrNull;
     if (headNode == null) {
       throw Exception(
           'EPUB parsing error: TOC file does not contain head element.');
@@ -77,9 +76,8 @@ class NavigationReader {
 
     final navigationHead = readNavigationHead(headNode);
     result.Head = navigationHead;
-    final docTitleNode = ncxNode
-        .findElements('docTitle', namespace: ncxNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+    final docTitleNode =
+        ncxNode.findElements('docTitle', namespace: ncxNamespace).firstOrNull;
     if (docTitleNode == null) {
       throw Exception(
           'EPUB parsing error: TOC file does not contain docTitle element.');
@@ -94,9 +92,8 @@ class NavigationReader {
       result.DocAuthors.add(navigationDocAuthor);
     });
 
-    final navMapNode = ncxNode
-        .findElements('navMap', namespace: ncxNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+    final navMapNode =
+        ncxNode.findElements('navMap', namespace: ncxNamespace).firstOrNull;
     if (navMapNode == null) {
       throw Exception(
           'EPUB parsing error: TOC file does not contain navMap element.');
@@ -104,9 +101,8 @@ class NavigationReader {
 
     final navMap = readNavigationMap(navMapNode);
     result.NavMap = navMap;
-    final pageListNode = ncxNode
-        .findElements('pageList', namespace: ncxNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+    final pageListNode =
+        ncxNode.findElements('pageList', namespace: ncxNamespace).firstOrNull;
     if (pageListNode != null) {
       final pageList = readNavigationPageList(pageListNode);
       result.PageList = pageList;
@@ -215,7 +211,7 @@ class NavigationReader {
 
     final navigationLabelTextNode = navigationLabelNode
         .findElements('text', namespace: navigationLabelNode.name.namespaceUri)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
     if (navigationLabelTextNode == null) {
       throw Exception(
           'Incorrect EPUB navigation label: label text element is missing.');

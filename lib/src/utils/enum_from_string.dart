@@ -3,7 +3,7 @@ class EnumFromString<T> {
 
   EnumFromString(this.enumValues);
 
-  T get(String value) {
+  T? get(String value) {
     value = '$T.$value';
     try {
       var x = enumValues

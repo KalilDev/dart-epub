@@ -16,10 +16,10 @@ class EpubMetadataWriter {
         ..Creators.forEach((item) =>
             builder.element('creator', namespace: _dc_namespace, nest: () {
               if (item.Role != null) {
-                builder.attribute('role', item.Role, namespace: _opf_namespace);
+                builder.attribute('role', item.Role!, namespace: _opf_namespace);
               }
               if (item.FileAs != null) {
-                builder.attribute('file-as', item.FileAs,
+                builder.attribute('file-as', item.FileAs!,
                     namespace: _opf_namespace);
               }
               builder.text(item.Creator);
@@ -42,7 +42,7 @@ class EpubMetadataWriter {
         ..Dates.forEach((date) =>
             builder.element('date', namespace: _dc_namespace, nest: () {
               if (date.Event != null) {
-                builder.attribute('event', date.Event,
+                builder.attribute('event', date.Event!,
                     namespace: _opf_namespace);
               }
               builder.text(date.Date);
@@ -53,9 +53,9 @@ class EpubMetadataWriter {
             builder.element('format', namespace: _dc_namespace, nest: format))
         ..Identifiers.forEach((id) =>
             builder.element('identifier', namespace: _dc_namespace, nest: () {
-              if (id.Id != null) builder.attribute('id', id.Id);
+              if (id.Id != null) builder.attribute('id', id.Id!);
               if (id.Scheme != null) {
-                builder.attribute('scheme', id.Scheme,
+                builder.attribute('scheme', id.Scheme!,
                     namespace: _opf_namespace);
               }
               builder.text(id.Identifier);
@@ -73,21 +73,21 @@ class EpubMetadataWriter {
         ..MetaItems.forEach((metaitem) => builder.element('meta', nest: () {
               if (version == EpubVersion.Epub2) {
                 if (metaitem.Name != null) {
-                  builder.attribute('name', metaitem.Name);
+                  builder.attribute('name', metaitem.Name!);
                 }
                 if (metaitem.Content != null) {
-                  builder.attribute('content', metaitem.Content);
+                  builder.attribute('content', metaitem.Content!);
                 }
               } else if (version == EpubVersion.Epub3) {
-                if (metaitem.Id != null) builder.attribute('id', metaitem.Id);
+                if (metaitem.Id != null) builder.attribute('id', metaitem.Id!);
                 if (metaitem.Refines != null) {
-                  builder.attribute('refines', metaitem.Refines);
+                  builder.attribute('refines', metaitem.Refines!);
                 }
                 if (metaitem.Property != null) {
-                  builder.attribute('property', metaitem.Property);
+                  builder.attribute('property', metaitem.Property!);
                 }
                 if (metaitem.Scheme != null) {
-                  builder.attribute('scheme', metaitem.Scheme);
+                  builder.attribute('scheme', metaitem.Scheme!);
                 }
               }
             }));

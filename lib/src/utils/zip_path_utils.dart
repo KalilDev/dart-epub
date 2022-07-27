@@ -8,7 +8,7 @@ class ZipPathUtils {
     }
   }
 
-  static String combine(String directory, String/*!*/ fileName) {
+  static String combine(String directory, String fileName) {
     if (directory == null || directory == '') {
       return fileName;
     } else {

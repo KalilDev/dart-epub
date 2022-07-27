@@ -7,11 +7,11 @@ import 'epub_spine.dart';
 import 'epub_version.dart';
 
 class EpubPackage {
-  /* late final */ EpubVersion Version;
-  /* late final */ EpubMetadata Metadata;
-  /* late final */ EpubManifest Manifest;
-  /* late final */ EpubSpine Spine;
-  /* late final */ EpubGuide Guide;
+  late final EpubVersion Version;
+  late final EpubMetadata Metadata;
+  late final EpubManifest Manifest;
+  late final EpubSpine Spine;
+  late final EpubGuide Guide;
 
   @override
   int get hashCode => hashObjects([

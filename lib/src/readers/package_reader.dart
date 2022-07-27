@@ -289,9 +289,8 @@ class PackageReader {
 
   static Future<EpubPackage> readPackage(
       Archive epubArchive, String rootFilePath) async {
-    final rootFileEntry = epubArchive.files.firstWhere(
-        (ArchiveFile testfile) => testfile.name == rootFilePath,
-        orElse: () => null);
+    final rootFileEntry = epubArchive.files.firstWhereOrNull(
+        (ArchiveFile testfile) => testfile.name == rootFilePath);
     if (rootFileEntry == null) {
       throw Exception('EPUB parsing error: root file not found in archive.');
     }
@@ -337,7 +336,7 @@ class PackageReader {
     result.Spine = spine;
     final guideNode = packageNode
         .findElements('guide', namespace: opfNamespace)
-        .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
+        .firstWhereOrNull((xml.XmlElement elem) => elem != null);
     if (guideNode != null) {
       final guide = readGuide(guideNode);
       result.Guide = guide;
@@ -347,7 +346,7 @@ class PackageReader {
 
   static EpubSpine readSpine(xml.XmlElement spineNode) {
     final result = EpubSpine();
-    final tocAttribute = spineNode.getAttribute('toc');
+    final tocAttribute = spineNode.getAttribute('toc')!;
     result.TableOfContents = tocAttribute;
     spineNode.children
         .whereType<xml.XmlElement>()
