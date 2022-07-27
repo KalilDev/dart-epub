@@ -1,8 +1,8 @@
 import 'package:quiver/core.dart';
 
 class EpubNavigationContent {
-  String Id;
-  String Source;
+  /* late final */ String Id;
+  /* late final */ String Source;
 
   @override
   int get hashCode => hash2(Id.hashCode, Source.hashCode);

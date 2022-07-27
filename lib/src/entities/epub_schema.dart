@@ -4,9 +4,9 @@ import '../schema/navigation/epub_navigation.dart';
 import '../schema/opf/epub_package.dart';
 
 class EpubSchema {
-  EpubPackage Package;
-  EpubNavigation Navigation;
-  String ContentDirectoryPath;
+  /* late final */ EpubPackage Package;
+  /* late final */ EpubNavigation Navigation;
+  /* late final */ String ContentDirectoryPath;
 
   @override
   int get hashCode => hash3(

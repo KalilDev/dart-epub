@@ -14,11 +14,11 @@ import 'epub_content_ref.dart';
 class EpubBookRef {
   final Archive _epubArchive;
 
-  String Title;
-  String Author;
-  List<String> AuthorList;
-  EpubSchema Schema;
-  EpubContentRef Content;
+  /* late final */ String Title;
+  /* late final */ String Author;
+  /* late final */ List<String> /*?*/ AuthorList;
+  /* late final */ EpubSchema Schema;
+  /* late final */ EpubContentRef Content;
   EpubBookRef(this._epubArchive);
 
   @override

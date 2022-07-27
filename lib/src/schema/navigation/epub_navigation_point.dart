@@ -5,12 +5,12 @@ import 'epub_metadata.dart';
 import 'epub_navigation_label.dart';
 
 class EpubNavigationPoint {
-  String Id;
-  String Class;
-  String PlayOrder;
-  List<EpubNavigationLabel> NavigationLabels;
-  EpubNavigationContent Content;
-  List<EpubNavigationPoint> ChildNavigationPoints;
+  /* late final */ String Id;
+  /* late final */ String Class;
+  /* late final */ String PlayOrder;
+  /* late final */ List<EpubNavigationLabel> NavigationLabels;
+  /* late final */ EpubNavigationContent Content;
+  /* late final */ List<EpubNavigationPoint> ChildNavigationPoints;
 
   @override
   int get hashCode {

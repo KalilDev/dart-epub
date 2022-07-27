@@ -1,9 +1,9 @@
 import 'package:quiver/core.dart';
 
 class EpubGuideReference {
-  String Type;
-  String Title;
-  String Href;
+  /* late final */ String Type;
+  /* late final */ String Title;
+  /* late final */ String Href;
 
   @override
   int get hashCode => hash3(Type.hashCode, Title.hashCode, Href.hashCode);

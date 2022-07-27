@@ -1,5 +1,5 @@
 class EpubNavigationLabel {
-  String Text;
+  /* late final */ String Text;
 
   @override
   int get hashCode => Text.hashCode;

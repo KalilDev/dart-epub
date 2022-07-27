@@ -7,13 +7,13 @@ import 'epub_content.dart';
 import 'epub_schema.dart';
 
 class EpubBook {
-  String Title;
-  String Author;
-  List<String> AuthorList;
-  EpubSchema Schema;
-  EpubContent Content;
-  Image CoverImage;
-  List<EpubChapter> Chapters;
+  /* late final */ String Title;
+  /* late final */ String Author;
+  /* late final */ List<String> /*?*/ AuthorList;
+  /* late final */ EpubSchema Schema;
+  /* late final */ EpubContent Content;
+  /* late final */ Image /*?*/ CoverImage;
+  /* late final */ List<EpubChapter> /*?*/ Chapters;
 
   @override
   int get hashCode {

@@ -6,16 +6,14 @@ import 'package:quiver/core.dart';
 import 'epub_text_content_file_ref.dart';
 
 class EpubChapterRef {
-  EpubTextContentFileRef epubTextContentFileRef;
+  final EpubTextContentFileRef epubTextContentFileRef;
 
-  String Title;
-  String ContentFileName;
-  String Anchor;
-  List<EpubChapterRef> SubChapters;
+  /* late final */ String Title;
+  /* late final */ String ContentFileName;
+  /* late final */ String Anchor;
+  /* late final */ List<EpubChapterRef> /*?*/ SubChapters;
 
-  EpubChapterRef(EpubTextContentFileRef epubTextContentFileRef) {
-    this.epubTextContentFileRef = epubTextContentFileRef;
-  }
+  EpubChapterRef(this.epubTextContentFileRef);
 
   @override
   int get hashCode {
