@@ -13,30 +13,32 @@ class EpubContentRef {
   Map<String, EpubContentFileRef> AllFiles;
 
   EpubContentRef() {
-    Html = Map<String, EpubTextContentFileRef>();
-    Css = Map<String, EpubTextContentFileRef>();
-    Images = Map<String, EpubByteContentFileRef>();
-    Fonts = Map<String, EpubByteContentFileRef>();
-    AllFiles = Map<String, EpubContentFileRef>();
+    Html = {};
+    Css = {};
+    Images = {};
+    Fonts = {};
+    AllFiles = {};
   }
 
   @override
   int get hashCode {
-    var objects = []
-      ..addAll(Html.keys.map((key) => key.hashCode))
-      ..addAll(Html.values.map((value) => value.hashCode))
-      ..addAll(Css.keys.map((key) => key.hashCode))
-      ..addAll(Css.values.map((value) => value.hashCode))
-      ..addAll(Images.keys.map((key) => key.hashCode))
-      ..addAll(Images.values.map((value) => value.hashCode))
-      ..addAll(Fonts.keys.map((key) => key.hashCode))
-      ..addAll(Fonts.values.map((value) => value.hashCode))
-      ..addAll(AllFiles.keys.map((key) => key.hashCode))
-      ..addAll(AllFiles.values.map((value) => value.hashCode));
+    var objects = [
+      ...Html.keys.map((key) => key.hashCode),
+      ...Html.values.map((value) => value.hashCode),
+      ...Css.keys.map((key) => key.hashCode),
+      ...Css.values.map((value) => value.hashCode),
+      ...Images.keys.map((key) => key.hashCode),
+      ...Images.values.map((value) => value.hashCode),
+      ...Fonts.keys.map((key) => key.hashCode),
+      ...Fonts.values.map((value) => value.hashCode),
+      ...AllFiles.keys.map((key) => key.hashCode),
+      ...AllFiles.values.map((value) => value.hashCode)
+    ];
 
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubContentRef;
     if (otherAs == null) {

@@ -11,8 +11,9 @@ abstract class EpubContentFile {
   int get hashCode =>
       hash3(FileName.hashCode, ContentType.hashCode, ContentMimeType.hashCode);
 
+  @override
   bool operator ==(other) {
-    var otherAs = other as EpubContentFile;
+    final otherAs = other as EpubContentFile;
     if (otherAs == null) {
       return false;
     }

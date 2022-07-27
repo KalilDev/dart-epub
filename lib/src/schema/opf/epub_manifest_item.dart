@@ -20,6 +20,7 @@ class EpubManifestItem {
         FallbackStyle.hashCode
       ]);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubManifestItem;
     if (otherAs == null) {
@@ -35,7 +36,8 @@ class EpubManifestItem {
         FallbackStyle == otherAs.FallbackStyle;
   }
 
+  @override
   String toString() {
-    return "Id: ${Id}, Href = ${Href}, MediaType = ${MediaType}";
+    return 'Id: $Id, Href = $Href, MediaType = $MediaType';
   }
 }

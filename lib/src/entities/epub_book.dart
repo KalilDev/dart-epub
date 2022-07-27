@@ -17,19 +17,21 @@ class EpubBook {
 
   @override
   int get hashCode {
-    var objects = []
-      ..add(Title.hashCode)
-      ..add(Author.hashCode)
-      ..add(Schema.hashCode)
-      ..add(Content.hashCode)
-      ..addAll(CoverImage?.getBytes()?.map((byte) => byte.hashCode) ?? [0])
-      ..addAll(AuthorList?.map((author) => author.hashCode) ?? [0])
-      ..addAll(Chapters?.map((chapter) => chapter.hashCode) ?? [0]);
+    final objects = [
+      Title.hashCode,
+      Author.hashCode,
+      Schema.hashCode,
+      Content.hashCode,
+      ...CoverImage?.getBytes()?.map((byte) => byte.hashCode) ?? [0],
+      ...AuthorList?.map((author) => author.hashCode) ?? [0],
+      ...Chapters?.map((chapter) => chapter.hashCode) ?? [0]
+    ];
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
-    var otherAs = other as EpubBook;
+    final otherAs = other as EpubBook;
     if (otherAs == null) {
       return false;
     }

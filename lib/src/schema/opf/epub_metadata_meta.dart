@@ -18,6 +18,7 @@ class EpubMetadataMeta {
         Scheme.hashCode
       ]);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataMeta;
     if (otherAs == null) return false;

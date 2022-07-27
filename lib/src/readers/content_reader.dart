@@ -1,26 +1,24 @@
 import '../entities/epub_content_type.dart';
 import '../ref_entities/epub_book_ref.dart';
 import '../ref_entities/epub_byte_content_file_ref.dart';
-import '../ref_entities/epub_content_file_ref.dart';
 import '../ref_entities/epub_content_ref.dart';
 import '../ref_entities/epub_text_content_file_ref.dart';
 import '../schema/opf/epub_manifest_item.dart';
 
 class ContentReader {
   static EpubContentRef parseContentMap(EpubBookRef bookRef) {
-    EpubContentRef result = EpubContentRef();
-    result.Html = Map<String, EpubTextContentFileRef>();
-    result.Css = Map<String, EpubTextContentFileRef>();
-    result.Images = Map<String, EpubByteContentFileRef>();
-    result.Fonts = Map<String, EpubByteContentFileRef>();
-    result.AllFiles = Map<String, EpubContentFileRef>();
+    final result = EpubContentRef();
+    result.Html = {};
+    result.Css = {};
+    result.Images = {};
+    result.Fonts = {};
+    result.AllFiles = {};
 
     bookRef.Schema.Package.Manifest.Items
         .forEach((EpubManifestItem manifestItem) {
-      String fileName = manifestItem.Href;
-      String contentMimeType = manifestItem.MediaType;
-      EpubContentType contentType =
-          getContentTypeByContentMimeType(contentMimeType);
+      final fileName = manifestItem.Href;
+      final contentMimeType = manifestItem.MediaType;
+      final contentType = getContentTypeByContentMimeType(contentMimeType);
       switch (contentType) {
         case EpubContentType.XHTML_1_1:
         case EpubContentType.CSS:
@@ -29,8 +27,7 @@ class ContentReader {
         case EpubContentType.XML:
         case EpubContentType.DTBOOK:
         case EpubContentType.DTBOOK_NCX:
-          EpubTextContentFileRef epubTextContentFile =
-              EpubTextContentFileRef(bookRef);
+          final epubTextContentFile = EpubTextContentFileRef(bookRef);
           {
             epubTextContentFile.FileName = Uri.decodeFull(fileName);
             epubTextContentFile.ContentMimeType = contentMimeType;
@@ -61,8 +58,7 @@ class ContentReader {
           result.AllFiles[fileName] = epubTextContentFile;
           break;
         default:
-          EpubByteContentFileRef epubByteContentFile =
-              EpubByteContentFileRef(bookRef);
+          final epubByteContentFile = EpubByteContentFileRef(bookRef);
           {
             epubByteContentFile.FileName = Uri.decodeFull(fileName);
             epubByteContentFile.ContentMimeType = contentMimeType;
@@ -100,33 +96,33 @@ class ContentReader {
   static EpubContentType getContentTypeByContentMimeType(
       String contentMimeType) {
     switch (contentMimeType.toLowerCase()) {
-      case "application/xhtml+xml":
+      case 'application/xhtml+xml':
         return EpubContentType.XHTML_1_1;
-      case "application/x-dtbook+xml":
+      case 'application/x-dtbook+xml':
         return EpubContentType.DTBOOK;
-      case "application/x-dtbncx+xml":
+      case 'application/x-dtbncx+xml':
         return EpubContentType.DTBOOK_NCX;
-      case "text/x-oeb1-document":
+      case 'text/x-oeb1-document':
         return EpubContentType.OEB1_DOCUMENT;
-      case "application/xml":
+      case 'application/xml':
         return EpubContentType.XML;
-      case "text/css":
+      case 'text/css':
         return EpubContentType.CSS;
-      case "text/x-oeb1-css":
+      case 'text/x-oeb1-css':
         return EpubContentType.OEB1_CSS;
-      case "image/gif":
+      case 'image/gif':
         return EpubContentType.IMAGE_GIF;
-      case "image/jpeg":
+      case 'image/jpeg':
         return EpubContentType.IMAGE_JPEG;
-      case "image/png":
+      case 'image/png':
         return EpubContentType.IMAGE_PNG;
-      case "image/svg+xml":
+      case 'image/svg+xml':
         return EpubContentType.IMAGE_SVG;
-      case "font/truetype":
+      case 'font/truetype':
         return EpubContentType.FONT_TRUETYPE;
-      case "font/opentype":
+      case 'font/opentype':
         return EpubContentType.FONT_OPENTYPE;
-      case "application/vnd.ms-opentype":
+      case 'application/vnd.ms-opentype':
         return EpubContentType.FONT_OPENTYPE;
       default:
         return EpubContentType.OTHER;

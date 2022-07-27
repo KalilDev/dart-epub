@@ -8,6 +8,7 @@ class EpubNavigationHeadMeta {
   @override
   int get hashCode => hash3(Name.hashCode, Content.hashCode, Scheme.hashCode);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationHeadMeta;
     if (otherAs == null) {

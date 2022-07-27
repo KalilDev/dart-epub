@@ -22,6 +22,7 @@ class EpubPackage {
         Guide.hashCode
       ]);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubPackage;
     if (otherAs == null) {

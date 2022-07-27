@@ -11,6 +11,7 @@ class EpubNavigationPageList {
     return hashObjects(Targets?.map((target) => target.hashCode) ?? [0]);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationPageList;
     if (otherAs == null) return false;

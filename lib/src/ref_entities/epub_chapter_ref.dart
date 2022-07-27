@@ -19,17 +19,19 @@ class EpubChapterRef {
 
   @override
   int get hashCode {
-    var objects = []
-      ..add(Title.hashCode)
-      ..add(ContentFileName.hashCode)
-      ..add(Anchor.hashCode)
-      ..add(epubTextContentFileRef.hashCode)
-      ..addAll(SubChapters?.map((subChapter) => subChapter.hashCode) ?? [0]);
+    final objects = [
+      Title.hashCode,
+      ContentFileName.hashCode,
+      Anchor.hashCode,
+      epubTextContentFileRef.hashCode,
+      ...SubChapters?.map((subChapter) => subChapter.hashCode) ?? [0]
+    ];
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
-    var otherAs = other as EpubChapterRef;
+    final otherAs = other as EpubChapterRef;
     if (otherAs == null) {
       return false;
     }
@@ -44,7 +46,8 @@ class EpubChapterRef {
     return epubTextContentFileRef.readContentAsText();
   }
 
+  @override
   String toString() {
-    return "Title: ${Title}, Subchapter count: ${SubChapters.length}";
+    return 'Title: $Title, Subchapter count: ${SubChapters.length}';
   }
 }

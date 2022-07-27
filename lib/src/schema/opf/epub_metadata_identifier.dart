@@ -8,6 +8,7 @@ class EpubMetadataIdentifier {
   @override
   int get hashCode => hash3(Id.hashCode, Scheme.hashCode, Identifier.hashCode);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataIdentifier;
     if (otherAs == null) return false;

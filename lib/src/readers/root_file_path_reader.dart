@@ -6,31 +6,31 @@ import 'package:xml/xml.dart' as xml;
 
 class RootFilePathReader {
   static Future<String> getRootFilePath(Archive epubArchive) async {
-    const String EPUB_CONTAINER_FILE_PATH = "META-INF/container.xml";
+    const EPUB_CONTAINER_FILE_PATH = 'META-INF/container.xml';
 
-    ArchiveFile containerFileEntry = epubArchive.files.firstWhere(
+    final containerFileEntry = epubArchive.files.firstWhere(
         (ArchiveFile file) => file.name == EPUB_CONTAINER_FILE_PATH,
         orElse: () => null);
     if (containerFileEntry == null) {
       throw Exception(
-          "EPUB parsing error: ${EPUB_CONTAINER_FILE_PATH} file not found in archive.");
+          'EPUB parsing error: $EPUB_CONTAINER_FILE_PATH file not found in archive.');
     }
 
-    xml.XmlDocument containerDocument =
+    final containerDocument =
         xml.XmlDocument.parse(convert.utf8.decode(containerFileEntry.content));
-    xml.XmlElement packageElement = containerDocument
-        .findAllElements("container",
-            namespace: "urn:oasis:names:tc:opendocument:xmlns:container")
+    final packageElement = containerDocument
+        .findAllElements('container',
+            namespace: 'urn:oasis:names:tc:opendocument:xmlns:container')
         .firstWhere((xml.XmlElement elem) => elem != null, orElse: () => null);
     if (packageElement == null) {
-      throw Exception("EPUB parsing error: Invalid epub container");
+      throw Exception('EPUB parsing error: Invalid epub container');
     }
 
     xml.XmlElement rootFileElement = packageElement.descendants.firstWhere(
         (xml.XmlNode testElem) =>
-            (testElem is xml.XmlElement) && "rootfile" == testElem.name.local,
+            (testElem is xml.XmlElement) && 'rootfile' == testElem.name.local,
         orElse: () => null);
 
-    return rootFileElement.getAttribute("full-path");
+    return rootFileElement.getAttribute('full-path');
   }
 }

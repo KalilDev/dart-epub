@@ -8,6 +8,7 @@ class EpubTextContentFile extends EpubContentFile {
   @override
   int get hashCode => hash4(Content, ContentMimeType, ContentType, FileName);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubTextContentFile;
     if (otherAs == null) {

@@ -7,7 +7,7 @@ class EpubGuide {
   List<EpubGuideReference> Items;
 
   EpubGuide() {
-    Items = List<EpubGuideReference>();
+    Items = [];
   }
 
   @override
@@ -17,6 +17,7 @@ class EpubGuide {
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubGuide;
     if (otherAs == null) {

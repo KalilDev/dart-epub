@@ -11,6 +11,7 @@ class EpubNavigationMap {
     return hashObjects(Points?.map((point) => point.hashCode) ?? [0]);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationMap;
     if (otherAs == null) return false;

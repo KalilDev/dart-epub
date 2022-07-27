@@ -7,15 +7,16 @@ class EpubNavigationHead {
   List<EpubNavigationHeadMeta> Metadata;
 
   EpubNavigationHead() {
-    Metadata = List<EpubNavigationHeadMeta>();
+    Metadata = [];
   }
 
   @override
   int get hashCode {
-    var objects = []..addAll(Metadata.map((meta) => meta.hashCode));
+    var objects = [...Metadata.map((meta) => meta.hashCode)];
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationHead;
     if (otherAs == null) {

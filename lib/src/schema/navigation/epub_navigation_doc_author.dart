@@ -5,15 +5,16 @@ class EpubNavigationDocAuthor {
   List<String> Authors;
 
   EpubNavigationDocAuthor() {
-    Authors = List<String>();
+    Authors = [];
   }
 
   @override
   int get hashCode {
-    var objects = []..addAll(Authors.map((author) => author.hashCode));
+    var objects = [...Authors.map((author) => author.hashCode)];
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubNavigationDocAuthor;
     if (otherAs == null) return false;

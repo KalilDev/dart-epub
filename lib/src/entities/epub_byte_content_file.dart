@@ -8,16 +8,18 @@ class EpubByteContentFile extends EpubContentFile {
 
   @override
   int get hashCode {
-    var objects = []
-      ..add(ContentMimeType.hashCode)
-      ..add(ContentType.hashCode)
-      ..add(FileName.hashCode)
-      ..addAll(Content?.map((content) => content.hashCode) ?? [0]);
+    final objects = [
+      ContentMimeType.hashCode,
+      ContentType.hashCode,
+      FileName.hashCode,
+      ...Content?.map((content) => content.hashCode) ?? [0]
+    ];
     return hashObjects(objects);
   }
 
+  @override
   bool operator ==(other) {
-    var otherAs = other as EpubByteContentFile;
+    final otherAs = other as EpubByteContentFile;
     if (otherAs == null) {
       return false;
     }

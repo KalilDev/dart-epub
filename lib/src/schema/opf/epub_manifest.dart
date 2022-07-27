@@ -7,7 +7,7 @@ class EpubManifest {
   List<EpubManifestItem> Items;
 
   EpubManifest() {
-    Items = List<EpubManifestItem>();
+    Items = [];
   }
 
   @override
@@ -15,6 +15,7 @@ class EpubManifest {
     return hashObjects(Items.map((item) => item.hashCode));
   }
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubManifest;
     if (otherAs == null) {

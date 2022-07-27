@@ -9,6 +9,7 @@ class EpubMetadataContributor {
   int get hashCode =>
       hash3(Contributor.hashCode, FileAs.hashCode, Role.hashCode);
 
+  @override
   bool operator ==(other) {
     var otherAs = other as EpubMetadataContributor;
     if (otherAs == null) return false;

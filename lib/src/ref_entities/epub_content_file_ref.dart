@@ -23,6 +23,7 @@ abstract class EpubContentFileRef {
   int get hashCode =>
       hash3(FileName.hashCode, ContentMimeType.hashCode, ContentType.hashCode);
 
+  @override
   bool operator ==(other) {
     return (other is EpubContentFileRef &&
         other.FileName == FileName &&
@@ -31,14 +32,14 @@ abstract class EpubContentFileRef {
   }
 
   ArchiveFile getContentFileEntry() {
-    String contentFilePath =
+    final contentFilePath =
         ZipPathUtils.combine(epubBookRef.Schema.ContentDirectoryPath, FileName);
-    ArchiveFile contentFileEntry = epubBookRef.EpubArchive().files.firstWhere(
+    final contentFileEntry = epubBookRef.EpubArchive().files.firstWhere(
         (ArchiveFile x) => x.name == contentFilePath,
         orElse: () => null);
     if (contentFileEntry == null) {
       throw Exception(
-          "EPUB parsing error: file ${contentFilePath} not found in archive.");
+          'EPUB parsing error: file $contentFilePath not found in archive.');
     }
     return contentFileEntry;
   }
@@ -48,24 +49,24 @@ abstract class EpubContentFileRef {
   }
 
   List<int> openContentStream(ArchiveFile contentFileEntry) {
-    List<int> contentStream = List<int>();
+    final contentStream = [];
     if (contentFileEntry.content == null) {
       throw Exception(
-          'Incorrect EPUB file: content file \"${FileName}\" specified in manifest is not found.');
+          'Incorrect EPUB file: content file \"$FileName\" specified in manifest is not found.');
     }
     contentStream.addAll(contentFileEntry.content);
     return contentStream;
   }
 
   Future<List<int>> readContentAsBytes() async {
-    ArchiveFile contentFileEntry = getContentFileEntry();
-    var content = openContentStream(contentFileEntry);
+    final contentFileEntry = getContentFileEntry();
+    final content = openContentStream(contentFileEntry);
     return content;
   }
 
   Future<String> readContentAsText() async {
-    List<int> contentStream = getContentStream();
-    String result = convert.utf8.decode(contentStream);
+    final contentStream = getContentStream();
+    final result = convert.utf8.decode(contentStream);
     return result;
   }
 }
