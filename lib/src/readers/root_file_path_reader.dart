@@ -17,7 +17,7 @@ class RootFilePathReader {
     }
 
     xml.XmlDocument containerDocument =
-        xml.parse(convert.utf8.decode(containerFileEntry.content));
+        xml.XmlDocument.parse(convert.utf8.decode(containerFileEntry.content));
     xml.XmlElement packageElement = containerDocument
         .findAllElements("container",
             namespace: "urn:oasis:names:tc:opendocument:xmlns:container")
