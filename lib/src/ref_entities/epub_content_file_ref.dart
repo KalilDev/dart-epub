@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:archive/archive.dart';
-import 'package:dart2_constant/convert.dart' as convert;
+import 'dart:convert' as convert;
 import 'package:quiver/core.dart';
 
 import '../entities/epub_content_type.dart';

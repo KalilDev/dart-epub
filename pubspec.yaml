@@ -11,7 +11,6 @@ dependencies:
   quiver: ">=2.0.0 <3.0.0"
   xml: "^4.2.0"
   image: ">=1.1.33 <3.0.0"
-  dart2_constant: ^1.0.1
 dev_dependencies:
   test: "^1.0.0"
   path: "^1.5.1"

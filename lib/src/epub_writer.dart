@@ -1,5 +1,5 @@
 import 'package:archive/archive.dart';
-import 'package:dart2_constant/convert.dart' as convert;
+import 'dart:convert' as convert;
 import 'package:epub/epub.dart';
 import 'package:epub/src/utils/zip_path_utils.dart';
 import 'package:epub/src/writers/epub_package_writer.dart';

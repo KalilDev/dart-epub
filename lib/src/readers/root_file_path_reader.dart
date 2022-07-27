@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:archive/archive.dart';
-import 'package:dart2_constant/convert.dart' as convert;
+import 'dart:convert' as convert;
 import 'package:xml/xml.dart' as xml;
 
 class RootFilePathReader {
