@@ -13,12 +13,9 @@ main() async {
 
   var reference = generator.randomEpubGuide();
 
-  EpubGuide testGuide;
+  EpubGuide testGuide = new EpubGuide();
   setUp(() async {
     testGuide = new EpubGuide()..Items = List.from(reference.Items);
-  });
-  tearDown(() async {
-    testGuide = null;
   });
   group("EpubGuide", () {
     group(".equals", () {

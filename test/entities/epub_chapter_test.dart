@@ -12,7 +12,7 @@ main() async {
     ..SubChapters = []
     ..Title = "A New Look at Chapters";
 
-  EpubChapter testChapter;
+  late EpubChapter testChapter;
   setUp(() async {
     testChapter = new EpubChapter();
     testChapter
@@ -21,9 +21,6 @@ main() async {
       ..HtmlContent = "<html></html>"
       ..SubChapters = []
       ..Title = "A New Look at Chapters";
-  });
-  tearDown(() async {
-    testChapter = null;
   });
   group("EpubChapter", () {
     group(".equals", () {

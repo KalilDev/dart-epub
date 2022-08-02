@@ -13,7 +13,7 @@ main() async {
     ..RequiredModules = "nodejs require()"
     ..RequiredNamespace = ".NET Namespace";
 
-  EpubManifestItem testManifestItem;
+  EpubManifestItem testManifestItem = new EpubManifestItem();
   setUp(() async {
     testManifestItem = new EpubManifestItem()
       ..Fallback = reference.Fallback
@@ -23,9 +23,6 @@ main() async {
       ..MediaType = reference.MediaType
       ..RequiredModules = reference.RequiredModules
       ..RequiredNamespace = reference.RequiredNamespace;
-  });
-  tearDown(() async {
-    testManifestItem = null;
   });
 
   group("EpubManifestItem", () {

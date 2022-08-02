@@ -12,7 +12,7 @@ main() async {
     ..Id = "Unique"
     ..Scheme = "A plot";
 
-  EpubMetadataMeta testMetadataMeta;
+  EpubMetadataMeta testMetadataMeta = new EpubMetadataMeta();
   setUp(() async {
     testMetadataMeta = new EpubMetadataMeta()
       ..Content = reference.Content
@@ -21,9 +21,6 @@ main() async {
       ..Refines = reference.Refines
       ..Id = reference.Id
       ..Scheme = reference.Scheme;
-  });
-  tearDown(() async {
-    testMetadataMeta = null;
   });
 
   group("EpubMetadataMeta", () {

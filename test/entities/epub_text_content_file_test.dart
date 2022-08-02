@@ -10,7 +10,7 @@ main() async {
     ..ContentMimeType = "application/test"
     ..ContentType = EpubContentType.OTHER
     ..FileName = "orthrosFile";
-  EpubTextContentFile testFile;
+  late EpubTextContentFile testFile;
   setUp(() async {
     testFile = new EpubTextContentFile();
     testFile
@@ -18,9 +18,6 @@ main() async {
       ..ContentMimeType = "application/test"
       ..ContentType = EpubContentType.OTHER
       ..FileName = "orthrosFile";
-  });
-  tearDown(() async {
-    testFile = null;
   });
   group("EpubTextContentFile", () {
     group(".equals", () {

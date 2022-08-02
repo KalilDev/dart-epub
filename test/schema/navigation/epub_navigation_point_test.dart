@@ -11,7 +11,7 @@ main() async {
   final generator = new RandomDataGenerator(new Random(7898), 10);
   final EpubNavigationPoint reference = generator.randomEpubNavigationPoint(1);
 
-  EpubNavigationPoint testNavigationPoint;
+  late EpubNavigationPoint testNavigationPoint;
   setUp(() async {
     testNavigationPoint = new EpubNavigationPoint()
       ..ChildNavigationPoints = List.from(reference.ChildNavigationPoints)
@@ -20,9 +20,6 @@ main() async {
       ..Id = reference.Id
       ..NavigationLabels = List.from(reference.NavigationLabels)
       ..PlayOrder = reference.PlayOrder;
-  });
-  tearDown(() async {
-    testNavigationPoint = null;
   });
 
   group("EpubNavigationPoint", () {

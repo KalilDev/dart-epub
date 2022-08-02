@@ -11,13 +11,10 @@ main() async {
   final generator = new RandomDataGenerator(new Random(7898), 10);
   final EpubNavigationDocTitle reference = generator.randomNavigationDocTitle();
 
-  EpubNavigationDocTitle testNavigationDocTitle;
+  late EpubNavigationDocTitle testNavigationDocTitle;
   setUp(() async {
     testNavigationDocTitle = new EpubNavigationDocTitle()
       ..Titles = List.from(reference.Titles);
-  });
-  tearDown(() async {
-    testNavigationDocTitle = null;
   });
 
   group("EpubNavigationDocTitle", () {

@@ -12,15 +12,11 @@ main() async {
   final EpubNavigationDocAuthor reference =
       generator.randomNavigationDocAuthor();
 
-  EpubNavigationDocAuthor testNavigationDocAuthor;
+  late EpubNavigationDocAuthor testNavigationDocAuthor;
   setUp(() async {
     testNavigationDocAuthor = new EpubNavigationDocAuthor()
       ..Authors = List.from(reference.Authors);
   });
-  tearDown(() async {
-    testNavigationDocAuthor = null;
-  });
-
   group("EpubNavigationDocAuthor", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

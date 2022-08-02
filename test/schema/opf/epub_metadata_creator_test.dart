@@ -9,15 +9,12 @@ main() async {
     ..FileAs = "Large"
     ..Role = "Creator";
 
-  EpubMetadataCreator testMetadataCreator;
+  EpubMetadataCreator testMetadataCreator = new EpubMetadataCreator();
   setUp(() async {
     testMetadataCreator = new EpubMetadataCreator()
       ..Creator = reference.Creator
       ..FileAs = reference.FileAs
       ..Role = reference.Role;
-  });
-  tearDown(() async {
-    testMetadataCreator = null;
   });
 
   group("EpubMetadataCreator", () {

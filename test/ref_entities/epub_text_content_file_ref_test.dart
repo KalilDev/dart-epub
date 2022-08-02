@@ -14,7 +14,7 @@ main() async {
     ..ContentMimeType = "application/test"
     ..ContentType = EpubContentType.OTHER
     ..FileName = "orthrosFile";
-  EpubTextContentFileRef testFile;
+  late EpubTextContentFileRef testFile;
 
   setUp(() async {
     var arch2 = new Archive();
@@ -27,9 +27,6 @@ main() async {
       ..FileName = "orthrosFile";
   });
 
-  tearDown(() async {
-    testFile = null;
-  });
   group("EpubTextContentFile", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

@@ -15,14 +15,11 @@ main() async {
     ..IsLinear = true
     ..IdRef = randomString.randomAlpha(length);
 
-  EpubSpineItemRef testSpineItemRef;
+  late EpubSpineItemRef testSpineItemRef;
   setUp(() async {
     testSpineItemRef = new EpubSpineItemRef()
       ..IsLinear = reference.IsLinear
       ..IdRef = reference.IdRef;
-  });
-  tearDown(() async {
-    testSpineItemRef = null;
   });
 
   group("EpubSpineItemRef", () {

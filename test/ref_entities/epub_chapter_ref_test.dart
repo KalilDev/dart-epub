@@ -18,8 +18,8 @@ main() async {
     ..SubChapters = []
     ..Title = "A New Look at Chapters";
 
-  EpubBookRef bookRef2;
-  EpubChapterRef testChapterRef;
+  late EpubBookRef bookRef2;
+  late EpubChapterRef testChapterRef;
   setUp(() async {
     var arch2 = new Archive();
     bookRef2 = new EpubBookRef(arch2);
@@ -33,10 +33,6 @@ main() async {
       ..Title = "A New Look at Chapters";
   });
 
-  tearDown(() async {
-    testChapterRef = null;
-    bookRef2 = null;
-  });
   group("EpubChapterRef", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

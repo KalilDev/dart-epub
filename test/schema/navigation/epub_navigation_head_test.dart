@@ -13,13 +13,10 @@ main() async {
 
   final EpubNavigationHead reference = generator.randomEpubNavigationHead();
 
-  EpubNavigationHead testGuideReference;
+  late EpubNavigationHead testGuideReference;
   setUp(() async {
     testGuideReference = new EpubNavigationHead()
       ..Metadata = List.from(reference.Metadata);
-  });
-  tearDown(() async {
-    testGuideReference = null;
   });
   group("EpubNavigationHead", () {
     group(".equals", () {

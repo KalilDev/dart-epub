@@ -13,16 +13,13 @@ main() async {
 
   var reference = generator.randomEpubGuideReference();
 
-  EpubGuideReference testGuideReference;
+  EpubGuideReference testGuideReference = new EpubGuideReference();
   setUp(() async {
     testGuideReference = new EpubGuideReference();
     testGuideReference
       ..Href = reference.Href
       ..Title = reference.Title
       ..Type = reference.Type;
-  });
-  tearDown(() async {
-    testGuideReference = null;
   });
   group("EpubGuideReference", () {
     group(".equals", () {

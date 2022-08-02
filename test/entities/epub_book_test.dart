@@ -15,7 +15,7 @@ main() async {
     ..Schema = new EpubSchema()
     ..Title = "A Dissertation on Epubs";
 
-  EpubBook testBook;
+  late EpubBook testBook;
   setUp(() async {
     testBook = new EpubBook();
     testBook
@@ -26,9 +26,6 @@ main() async {
       ..CoverImage = Image(100, 100)
       ..Schema = new EpubSchema()
       ..Title = "A Dissertation on Epubs";
-  });
-  tearDown(() async {
-    testBook = null;
   });
   group("EpubBook", () {
     group(".equals", () {

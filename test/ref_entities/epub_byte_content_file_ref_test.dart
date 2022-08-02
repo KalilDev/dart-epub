@@ -15,7 +15,7 @@ main() async {
     ..ContentType = EpubContentType.OTHER
     ..FileName = "orthrosFile";
 
-  EpubByteContentFileRef testFileRef;
+  late EpubByteContentFileRef testFileRef;
 
   setUp(() async {
     Archive arch2 = new Archive();
@@ -26,10 +26,6 @@ main() async {
       ..ContentMimeType = "application/test"
       ..ContentType = EpubContentType.OTHER
       ..FileName = "orthrosFile";
-  });
-
-  tearDown(() async {
-    testFileRef = null;
   });
 
   group("EpubByteContentFileRef", () {

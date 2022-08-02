@@ -17,12 +17,9 @@ main() async {
       ..RequiredNamespace = ".NET Namespace"
   ];
 
-  EpubManifest testManifest;
+  EpubManifest testManifest = new EpubManifest();
   setUp(() async {
     testManifest = new EpubManifest()..Items = List.from(reference.Items);
-  });
-  tearDown(() async {
-    testManifest = null;
   });
   group("EpubManifest", () {
     group(".equals", () {

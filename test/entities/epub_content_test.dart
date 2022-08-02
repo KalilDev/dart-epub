@@ -6,9 +6,9 @@ import 'package:test/test.dart';
 main() async {
   var reference = new EpubContent();
 
-  EpubContent testContent;
-  EpubTextContentFile textContentFile;
-  EpubByteContentFile byteContentFile;
+  late EpubContent testContent;
+  late EpubTextContentFile textContentFile;
+  late EpubByteContentFile byteContentFile;
 
   setUp(() async {
     testContent = new EpubContent();
@@ -27,11 +27,6 @@ main() async {
       ..FileName = "orthros.bin";
   });
 
-  tearDown(() async {
-    testContent = null;
-    textContentFile = null;
-    byteContentFile = null;
-  });
   group("EpubContent", () {
     group(".equals", () {
       test("is true for equivalent objects", () async {

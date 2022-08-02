@@ -8,14 +8,11 @@ main() async {
     ..Date = "a date"
     ..Event = "Some important event";
 
-  EpubMetadataDate testMetadataDate;
+  EpubMetadataDate testMetadataDate = new EpubMetadataDate();
   setUp(() async {
     testMetadataDate = new EpubMetadataDate()
       ..Date = reference.Date
       ..Event = reference.Event;
-  });
-  tearDown(() async {
-    testMetadataDate = null;
   });
 
   group("EpubMetadataIdentifier", () {

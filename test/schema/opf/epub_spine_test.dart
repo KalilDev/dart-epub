@@ -20,14 +20,11 @@ main() async {
     ]
     ..TableOfContents = randomString.randomAlpha(length);
 
-  EpubSpine testSpine;
+  late EpubSpine testSpine;
   setUp(() async {
     testSpine = new EpubSpine()
       ..Items = List.from(reference.Items)
       ..TableOfContents = reference.TableOfContents;
-  });
-  tearDown(() async {
-    testSpine = null;
   });
 
   group("EpubSpine", () {

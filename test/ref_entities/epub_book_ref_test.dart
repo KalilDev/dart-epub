@@ -16,7 +16,7 @@ main() async {
     ..Schema = new EpubSchema()
     ..Title = "A Dissertation on Epubs";
 
-  EpubBookRef testBookRef;
+  late EpubBookRef testBookRef;
   setUp(() async {
     testBookRef = new EpubBookRef(arch);
     testBookRef
@@ -24,9 +24,6 @@ main() async {
       ..AuthorList = ["orthros"]
       ..Schema = new EpubSchema()
       ..Title = "A Dissertation on Epubs";
-  });
-  tearDown(() async {
-    testBookRef = null;
   });
   group("EpubBookRef", () {
     group(".equals", () {
