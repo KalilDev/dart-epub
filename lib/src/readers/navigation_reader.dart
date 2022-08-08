@@ -296,9 +296,10 @@ class NavigationReader {
           value = attributeValue;
           break;
         case 'type':
-          final converter = EnumFromString<EpubNavigationPageTargetType>(
-              EpubNavigationPageTargetType.values);
-          type = converter.get(attributeValue) ??
+          type = enumFromString(
+                EpubNavigationPageTargetType.values,
+                attributeValue,
+              ) ??
               EpubNavigationPageTargetType.UNDEFINED;
           break;
         case 'class':

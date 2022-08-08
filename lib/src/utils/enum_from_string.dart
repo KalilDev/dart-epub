@@ -1,16 +1,5 @@
-class EnumFromString<T> {
-  final List<T> enumValues;
-
-  EnumFromString(this.enumValues);
-
-  T? get(String value) {
-    value = '$T.$value';
-    try {
-      var x = enumValues
-          .firstWhere((f) => f.toString().toUpperCase() == value.toUpperCase());
-      return x;
-    } catch (e) {
-      return null;
-    }
-  }
-}
+T? enumFromString<T extends Enum>(List<T> enumValues, String s) =>
+    enumValues.cast<T?>().singleWhere(
+          (e) => e!.name == s,
+          orElse: () => null,
+        );
