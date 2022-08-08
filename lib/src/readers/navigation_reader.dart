@@ -298,7 +298,7 @@ class NavigationReader {
         case 'type':
           type = enumFromString(
                 EpubNavigationPageTargetType.values,
-                attributeValue,
+                attributeValue.toUpperCase(),
               ) ??
               EpubNavigationPageTargetType.UNDEFINED;
           break;
